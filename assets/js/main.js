@@ -263,7 +263,7 @@ document.documentElement.classList.add('js');
         checkout,
         guests: availGuests?.value || '2',
       });
-      window.location.href = `/book.html?${params.toString()}`;
+      window.location.href = `book.html?${params.toString()}`;
     });
   }
 
@@ -355,13 +355,48 @@ document.documentElement.classList.add('js');
         notes,
       };
 
+      const bookingTextLines = [
+        'Hello Sunrise Villa! I would like to book a room via your website.',
+        '',
+        `Room: ${roomName}`,
+        `Check-in: ${formatDate(checkin)}`,
+        `Check-out: ${formatDate(checkout)}`,
+        `Nights: ${nights}`,
+        `Guests: ${guestText}`,
+        `Name: ${name}`,
+        `Phone: ${phone}`,
+        email ? `Email: ${email}` : null,
+        `Estimated total: ${estimate}`,
+        notes ? `Notes: ${notes}` : null,
+        '',
+        'Please confirm availability. Thank you!',
+      ].filter((line) => line !== null);
+
+      function showWhatsAppFallback() {
+        currentBookingText = bookingTextLines.join('\n');
+        const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(currentBookingText)}`;
+        if (formError) {
+          formError.innerHTML = '';
+          const note = document.createElement('span');
+          note.textContent = 'We could not reach the booking server. ';
+          const link = document.createElement('a');
+          link.href = waLink;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.textContent = 'Tap here to send your request on WhatsApp instead.';
+          formError.append(note, link);
+          formError.hidden = false;
+          formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.setAttribute('aria-busy', 'true');
       }
 
       try {
-        const response = await fetch('/api/bookings', {
+        const response = await fetch('api/bookings', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
@@ -369,34 +404,24 @@ document.documentElement.classList.add('js');
         const data = await response.json().catch(() => ({}));
 
         if (!response.ok) {
-          const serverMessage = data.error || 'We could not save your request. Please call or WhatsApp us.';
-          if (formError) {
-            formError.textContent = serverMessage;
-            formError.hidden = false;
+          if (data.error) {
+            if (formError) {
+              formError.textContent = data.error;
+              formError.hidden = false;
+            }
+            formError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            showWhatsAppFallback();
           }
-          formError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
 
         const booking = data.booking || {};
         const reference = booking.reference || 'SV';
-        currentBookingText = [
-          'Hello Sunrise Villa! I just sent a booking request on your website.',
-          '',
-          `Reference: ${reference}`,
-          `Room: ${roomName}`,
-          `Check-in: ${formatDate(checkin)}`,
-          `Check-out: ${formatDate(checkout)}`,
-          `Nights: ${nights}`,
-          `Guests: ${guestText}`,
-          `Name: ${name}`,
-          `Phone: ${phone}`,
-          email ? `Email: ${email}` : null,
-          `Estimated total: ${estimate}`,
-          notes ? `Notes: ${notes}` : null,
-          '',
-          'Please confirm availability. Thank you!',
-        ].filter((line) => line !== null).join('\n');
+        const successLines = bookingTextLines.slice();
+        successLines[0] = 'Hello Sunrise Villa! I just sent a booking request on your website.';
+        successLines.splice(2, 0, `Reference: ${reference}`);
+        currentBookingText = successLines.join('\n');
 
         if (successRef) successRef.textContent = reference;
         if (successSummary) {
@@ -428,10 +453,7 @@ document.documentElement.classList.add('js');
           successPanel.focus({ preventScroll: true });
         }
       } catch (error) {
-        if (formError) {
-          formError.textContent = 'We could not reach the booking server. Please check your connection or call us.';
-          formError.hidden = false;
-        }
+        showWhatsAppFallback();
       } finally {
         if (submitButton) {
           submitButton.disabled = false;

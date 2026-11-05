@@ -1,10 +1,11 @@
 @echo off
 title Sunrise Villa Server
 cd /d "%~dp0"
+set PORT=3001
 echo ============================================
 echo   Sunrise Villa server start ho raha hai...
-echo   Website: http://localhost:3000
-echo   Phone:   http://192.168.137.1:3000
+echo   Website: http://localhost:3001
+echo   Phone:   http://192.168.137.1:3001
 echo ============================================
 echo.
 echo Band karne ke liye ye window close kar dena.
