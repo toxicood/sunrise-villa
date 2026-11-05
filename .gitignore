@@ -1,0 +1,11 @@
+# Dependencies (none needed, but just in case)
+node_modules/
+
+# Runtime data
+*.log
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
