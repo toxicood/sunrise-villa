@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" role="img" aria-labelledby="title desc">
+  <title id="title">Sunrise Villa, Golai Bazar, Lebong, Darjeeling</title>
+  <desc id="desc">A circular black and gold homestay logo with a rising sun, Himalayan peaks, pine trees and a little house.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#14231a"/>
+      <stop offset="72%" stop-color="#0a0c09"/>
+      <stop offset="100%" stop-color="#050604"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd86b"/>
+      <stop offset="55%" stop-color="#f2b72e"/>
+      <stop offset="100%" stop-color="#d99516"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5aa22e"/>
+      <stop offset="50%" stop-color="#9bd13c"/>
+      <stop offset="100%" stop-color="#4c942c"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="11" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="disc">
+      <circle cx="220" cy="220" r="205"/>
+    </clipPath>
+  </defs>
+
+  <circle cx="220" cy="220" r="216" fill="#f6e6b7" opacity=".24" filter="url(#softGlow)"/>
+  <circle cx="220" cy="220" r="212" fill="url(#bg)" stroke="#fff3cf" stroke-width="5" filter="url(#glow)"/>
+  <circle cx="220" cy="220" r="200" fill="none" stroke="#e9c56d" stroke-width="1.4" opacity=".55"/>
+
+  <g clip-path="url(#disc)">
+    <!-- sunrise -->
+    <g filter="url(#glow)">
+      <circle cx="220" cy="143" r="29" fill="url(#gold)"/>
+      <g stroke="#ffc93f" stroke-width="4.5" stroke-linecap="round">
+        <path d="M220 83v18M220 185v18M160 143h18M262 143h18M177 100l13 13M250 173l13 13M263 100l-13 13M190 173l-13 13M158 130l-17-5M265 156l17 5M158 156l-17 5M265 130l17-5"/>
+        <path d="M183 83l7 17M257 203l-7-17M277 118l-16 9M163 168l16-9"/>
+      </g>
+    </g>
+
+    <!-- mountain range -->
+    <path d="M40 218 112 154l40 42 35-54 72 76Z" fill="#dce5df"/>
+    <path d="M112 154 152 196l-13 6-12-8-11 12-22-13Z" fill="#f7faf7"/>
+    <path d="M187 142 259 218 187 218 153 196Z" fill="#b7c4bd" opacity=".9"/>
+    <path d="M223 127 318 218 223 218 187 142Z" fill="#edf3ee"/>
+    <path d="M287 174 338 218 287 218 262 196Z" fill="#cfd9d2"/>
+
+    <!-- pine trees -->
+    <g fill="#6fba33" filter="url(#glow)">
+      <path d="M316 162l-21 37h12l-17 27h50l-17-27h12z"/>
+      <path d="M347 177l-16 29h9l-13 22h39l-13-22h9z"/>
+      <path d="M291 184l-13 24h7l-11 18h32l-11-18h7z"/>
+      <rect x="313" y="224" width="6" height="12" fill="#5b4024"/>
+      <rect x="344" y="226" width="5" height="10" fill="#5b4024"/>
+    </g>
+
+    <!-- hills -->
+    <path d="M32 229c69-38 155-19 215-4 66 17 127 14 168-4v38H32Z" fill="#3d7c2e" opacity=".75"/>
+    <path d="M32 230c76-25 140-12 194 2 56 15 122 16 189-4" fill="none" stroke="url(#green)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- little home -->
+    <path d="M184 216v-27l38-27 39 27v27Z" fill="#1d1b10" stroke="#ffcf45" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M172 195l50-38 52 38" fill="none" stroke="url(#gold)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="208" y="191" width="14" height="14" rx="1.5" fill="#ffc83d"/>
+    <rect x="228" y="191" width="14" height="14" rx="1.5" fill="#ffc83d"/>
+    <path d="M216 217v-13h12v13" fill="#f0ad21"/>
+
+    <!-- name -->
+    <text x="56" y="291" fill="#fffdf5" font-family="'Segoe Script','Brush Script MT','Lucida Handwriting',cursive" font-size="65" textLength="207" lengthAdjust="spacingAndGlyphs">Sunrise</text>
+    <text x="267" y="291" fill="url(#gold)" font-family="'Segoe Script','Brush Script MT','Lucida Handwriting',cursive" font-size="65" textLength="123" lengthAdjust="spacingAndGlyphs">Villa</text>
+    <path d="M74 307c73-15 137-13 197 1 39 9 72 8 101 0" fill="none" stroke="url(#green)" stroke-width="5.5" stroke-linecap="round" filter="url(#glow)"/>
+
+    <!-- location -->
+    <path d="M92 316c-9 0-16 7-16 16 0 12 16 27 16 27s16-15 16-27c0-9-7-16-16-16Z" fill="#f04438" filter="url(#glow)"/>
+    <circle cx="92" cy="332" r="5.6" fill="#fff"/>
+    <text x="121" y="331" fill="#fffdf5" font-family="'Trebuchet MS',Verdana,sans-serif" font-size="18.5" font-weight="700">Golai Bazar, Lebong</text>
+    <text x="121" y="354" fill="#fffdf5" font-family="'Trebuchet MS',Verdana,sans-serif" font-size="18.5" font-weight="700">Darjeeling</text>
+    <path d="M158 366h128" stroke="#f5dfaa" stroke-width="1.7" opacity=".8"/>
+
+    <!-- phone -->
+    <circle cx="91" cy="392" r="17" fill="#32d05a" filter="url(#glow)"/>
+    <path d="M85 383c1.7-1.5 4-1.2 5 .7l2.2 4.1c.8 1.5.2 2.6-1.2 3.4l-1.4.8c1.8 3.9 4.5 6.6 8.3 8.2l.8-1.4c.8-1.4 2-2 3.5-1.2l4.1 2.2c1.9 1 2.2 3.3.7 5-2.7 3-6.1 4.3-9.8 3.3-4.6-1.3-8.4-3.7-11.4-7.2-3-3.6-4.4-7.3-3.7-10.7.5-2.8 1.6-5.4 2.9-7.2Z" fill="#fff"/>
+    <text x="120" y="388" fill="#fffdf5" font-family="'Trebuchet MS',Verdana,sans-serif" font-size="24" font-weight="700" letter-spacing="1">9832233086</text>
+    <text x="120" y="414" fill="#fffdf5" font-family="'Trebuchet MS',Verdana,sans-serif" font-size="24" font-weight="700" letter-spacing="1">8972745152</text>
+  </g>
+</svg>
